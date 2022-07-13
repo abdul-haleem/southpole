@@ -9,12 +9,12 @@ const Item = new mongoose.Schema({
         type: String,
         required: true
     },
-    barcode: {
-        type: String,
+    basePrice: {
+        type: Number,
         required: true
     }
+},{
+    timestamps: true,
 });
 
-const ItemModel = mongoose.model("items",Item)
-
-module.exports = ItemModel;
+module.exports = mongoose.model("items",Item)
