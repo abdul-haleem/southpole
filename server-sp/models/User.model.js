@@ -4,9 +4,8 @@ const { omitBy, isNil } = require('lodash');
 const bcrypt = require('bcryptjs');
 const moment = require('moment-timezone');
 const jwt = require('jwt-simple');
-const uuidv4 = require('uuid/v4');
-const APIError = require('../errors/api-error');
-const { env, jwtSecret, jwtExpirationInterval } = require('../../config/vars');
+const APIError = require('../middleware/error.middleware');
+const { env, jwtSecret, jwtExpirationInterval } = require('../cfg/vars')
 
 
 const roles = ['user', 'admin'];
@@ -29,6 +28,8 @@ const userSchema = new mongoose.Schema({
     username: {
       type: String,
       maxLength: 128,
+      unique: true,
+      required: true,
       index: true,
       trim: true,
     },
@@ -123,7 +124,7 @@ const userSchema = new mongoose.Schema({
      */
     async findAndGenerateToken(options) {
       const { email, password, refreshObject } = options;
-      if (!email) throw new APIError({ message: 'An email is required to generate a token' });
+      if (!email) throw new Error('An email is required to generate a token');
   
       const user = await this.findOne({ email }).exec();
       const err = {
@@ -144,7 +145,7 @@ const userSchema = new mongoose.Schema({
       } else {
         err.message = 'Incorrect email or refreshToken';
       }
-      throw new APIError(err);
+      throw new Error(err.message);
     },
   
     /**

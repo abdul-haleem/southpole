@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 exports.connect = () => {
     mongoose.connect(process.env.MONGO_URI, {
-        keepAlive: 1,
+        keepAlive: true,
         useNewUrlParser: true,
         useUnifiedTopology: true
     })

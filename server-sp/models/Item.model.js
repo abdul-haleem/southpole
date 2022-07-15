@@ -12,9 +12,14 @@ const Item = new mongoose.Schema({
     basePrice: {
         type: Number,
         required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
     }
-},{
+}, {
     timestamps: true,
 });
 
-module.exports = mongoose.model("items",Item)
+module.exports = mongoose.model("items", Item)

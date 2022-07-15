@@ -1,6 +1,6 @@
 const httpStatus = require('http-status')
 const asyncHandler = require('express-async-handler')
-const  Item = require('../../models/Item.model')
+const  Item = require('../models/Item.model')
 
 // @desc Get List Of Items
 // @route GET /api/v1/items
