@@ -4,8 +4,8 @@ const { omitBy, isNil } = require('lodash');
 const bcrypt = require('bcryptjs');
 const moment = require('moment-timezone');
 const jwt = require('jwt-simple');
-const APIError = require('../middleware/error.middleware');
-const { env, jwtSecret, jwtExpirationInterval } = require('../cfg/vars')
+const APIError = require('../../middleware/error.middleware');
+const { env, jwtSecret, jwtExpirationInterval } = require('../../cfg/vars')
 
 
 const roles = ['user', 'admin'];

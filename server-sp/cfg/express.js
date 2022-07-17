@@ -3,7 +3,7 @@ const mongoose = require('./db');
 const passport = require('passport');
 const cors = require('cors');
 
-require('../cfg/passport')
+require('./passport')
 
 const app = express();
 mongoose.connect(); 

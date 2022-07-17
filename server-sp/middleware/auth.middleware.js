@@ -1,7 +1,7 @@
 const httpStatus = require('http-status');
 const passport = require('passport');
-const User = require('../models/User.model');
-const APIError = require('../middleware/ApiError');
+const User = require('../app-modules/users/User.model');
+const APIError = require('./ApiError');
 
 const ADMIN = 'admin';
 const LOGGED_USER = '_loggedUser';

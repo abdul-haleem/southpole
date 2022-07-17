@@ -1,7 +1,6 @@
 const express = require('express');
-const {createUser, getProfile, login, listUsers} = require('../../api/user.api');
+const {createUser, getProfile, login, listUsers} = require('./user.api');
 const { authorize, ADMIN, LOGGED_USER } = require('../../middleware/auth.middleware');
-const passport = require('passport');
 
 const router = express.Router();
 

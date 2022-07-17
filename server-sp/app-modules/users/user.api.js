@@ -2,9 +2,9 @@ const httpStatus = require('http-status')
 const moment = require('moment-timezone');
 const { omit } = require('lodash');
 const asyncHandler = require('express-async-handler')
-const  User = require('../models/User.model')
-const  RefreshToken = require('../models/RefreshToken.model')
-const {jwtExpirationInterval } = require('../cfg/vars')
+const  User = require('./User.model')
+const  RefreshToken = require('../common/RefreshToken.model')
+const {jwtExpirationInterval } = require('../../cfg/vars')
 /**
  * Create new user
  * @public
@@ -21,7 +21,7 @@ const {jwtExpirationInterval } = require('../cfg/vars')
   });
 
 const getProfile = asyncHandler(async (req,res,next) => {
-  res.json({ message: "User Profile"});
+  res.json(req.user.transform());
 });
    
 
