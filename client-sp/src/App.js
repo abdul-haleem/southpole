@@ -2,12 +2,14 @@ import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Header from './app/components/Header';
+import Header from './components/Header';
+
 
 function App() {
   return (
+    <>
     <Router>
-      <div className="container">
+      <div id='root' className="container">
         <Header />
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -16,6 +18,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </>
   );
 }
 
