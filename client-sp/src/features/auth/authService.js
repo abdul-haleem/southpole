@@ -15,14 +15,17 @@ const registerUser = async (userData) => {
 const login = async (loginRequest) => {
     const response = await axios.post(LOGIN_URL,loginRequest);
     if (response.status === httpStatus.OK && response.data){
-        console.log('setting data in local storage')
         localStorage.setItem('authdata', JSON.stringify(response.data));
     }
     return response.data;
 }
 
+const logout = async () => {
+    localStorage.removeItem('authdata');
+}
+
 const authService  = {
-    registerUser,login
+    registerUser,login, logout
 }
 export default authService;
 

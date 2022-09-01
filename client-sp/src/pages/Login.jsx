@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FaSignInAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux'
-import { login,reset } from '../features/auth/authSlice'
+import { login } from '../features/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
 import Spinner from '../components/Spinner'
 
@@ -19,24 +19,24 @@ function Login() {
 
   const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
-
-  useEffect(() => {
-    console.log('inside userEffect')
-    if (isError) {
-      console.error(message)
-    }
-    if (isSuccess) {
-      navigate('/')
-    }
-    dispatch(reset)
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
-
   const onChange = (e) => {
     setFormData((previousState) => ({
       ...previousState,
       [e.target.name]: e.target.value,
     }));
   };
+
+  useEffect(() => {
+    console.log('inside use effect')
+    if (isError) {
+      console.error(message)
+    }
+    if (isSuccess || user) {
+      navigate('/')
+    }
+
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
 
   const onSubmit = (e) => { 
     e.preventDefault();
